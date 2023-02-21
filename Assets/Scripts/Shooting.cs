@@ -10,12 +10,13 @@ public class Shooting : StateMachineBehaviour
     private float _shootSpeed;
     [SerializeField]
     private GameObject _bulletGroup;
-    //[SerializeField]
-    //private SpriteRenderer _playerColor;
+
+    private GameObject _player;
 
     private void Awake()
     {
         _bulletGroup = GameObject.Find("BulletGroup");
+        _player = GameObject.Find("Player");
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -33,18 +34,20 @@ public class Shooting : StateMachineBehaviour
         projectileDown.transform.parent = _bulletGroup.transform;
         projectileRight.transform.parent = _bulletGroup.transform;
         projectileLeft.transform.parent = _bulletGroup.transform;
-        //_playerColor.color = Color.green;
+        _player.GetComponent<SpriteRenderer>().color = Color.green;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        _player.GetComponent<SpriteRenderer>().color = Color.red;
+
     }
 }
