@@ -15,13 +15,10 @@ public class PlayerBehavour : MonoBehaviour
     [SerializeField]
     private float _nextShootTime;
     [SerializeField]
-    private float _shootDelay;
-    [SerializeField]
-    private float _shootDrag;
-    [SerializeField]
     private GameObject _bullet;
     [SerializeField]
-    private Rigidbody2D _bulletRb2D;
+    private float _fireRate;
+
 
     private void Awake()
     {
@@ -36,10 +33,15 @@ public class PlayerBehavour : MonoBehaviour
     void Update()
     {
         Movement();
-        Shoot(Vector2.up);
-        Shoot(Vector2.down);
-        Shoot(Vector2.left);
-        Shoot(Vector2.right);
+        //if (Time.timeSinceLevelLoad > _nextShootTime)
+        //{
+        //    Shoot(Vector2.up);
+        //    Shoot(Vector2.down);
+        //    Shoot(Vector2.left);
+        //    Shoot(Vector2.right);
+        //    _nextShootTime = Time.timeSinceLevelLoad / _fireRate;
+        //}
+        
     }
 
     private void FixedUpdate()
@@ -53,16 +55,13 @@ public class PlayerBehavour : MonoBehaviour
         _direction.y = Input.GetAxisRaw("Vertical") * _speed;
     }
 
-    private void Shoot(Vector2 direction)
-    {
-        if (Time.timeSinceLevelLoad > _nextShootTime)
-        {
-            GameObject projectile = Instantiate(_bullet, direction, Quaternion.identity);
+    //private void Shoot(Vector2 direction)
+    //{
+    //    GameObject projectile = Instantiate(_bullet, direction, Quaternion.identity);
 
-            projectile.GetComponent<Rigidbody2D>().velocity = direction * _shootSpeed;
-            //_nextShootTime = Time.timeSinceLevelLoad + _shootDelay;
-        }
-    }
+    //    projectile.GetComponent<Rigidbody2D>().velocity = direction * _shootSpeed;
+
+    //}
 
     private Rigidbody2D _rb2D;
     private Vector2 _direction;
