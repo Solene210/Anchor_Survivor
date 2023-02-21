@@ -36,7 +36,7 @@ public class EnemyLife : MonoBehaviour
     }
     IEnumerator coroutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         for (int i = 0; i < 8; i++)
         {
             yield return new WaitForSeconds(0.10f);

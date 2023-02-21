@@ -47,7 +47,7 @@ public class Shooting : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player.GetComponent<SpriteRenderer>().color = Color.red;
+        _player.GetComponent<SpriteRenderer>().color = Color.yellow;
 
     }
 }
