@@ -18,6 +18,7 @@ public class EnemyLife : MonoBehaviour
     {
         if (_isDead == true)
         {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(coroutine());
             _enemyBehaviour.enabled= false;
             _isDead = false;
@@ -45,6 +46,8 @@ public class EnemyLife : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.blue;
         }
         _killEnemy.m_value += 1;
+        RewardsEffects r = GameObject.Find("RewardsManager").GetComponent<RewardsEffects>();
+        r.AfterEnemyDeath?.Invoke();
         Destroy(gameObject);
     }
 

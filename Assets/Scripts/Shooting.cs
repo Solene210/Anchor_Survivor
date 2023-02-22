@@ -48,7 +48,7 @@ public class Shooting : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player.GetComponent<SpriteRenderer>().color = Color.yellow;
-        //RewardsEffects r = GameObject.Find("RewardsManager").GetComponent<RewardsEffects>();
-        //r.AfterAttack.Invoke();
+        RewardsEffects r = GameObject.Find("RewardsManager").GetComponent<RewardsEffects>();
+        r.AfterAttack?.Invoke();
     }
 }

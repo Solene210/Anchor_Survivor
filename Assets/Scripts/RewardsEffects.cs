@@ -14,6 +14,8 @@ public class RewardsEffects : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private float _bulletSpeed;
+    [SerializeField]
+    private Transform _playerTransform;
 
     [Header("Event")]
     public UnityEvent AfterAttack;
@@ -22,8 +24,6 @@ public class RewardsEffects : MonoBehaviour
     void Start()
     {
         _target = GameObject.Find("Player").transform;
-        AfterAttack.AddListener(DoubleAttack);
-        AfterEnemyDeath.AddListener(CreateBonusBullet);
     }
 
     void Update()
@@ -33,18 +33,16 @@ public class RewardsEffects : MonoBehaviour
 
     public void AddAttack()
     {
-        //AfterAttack.AddListener(DoubleAttack);
+        AfterAttack.AddListener(DoubleAttack);
         Time.timeScale= 1.0f;
         _rewardsUI.SetActive(false);
-        AfterAttack.Invoke();
     }
 
     public void AddBullerAfterEnemyDeath()
     {
-        //AfterEnemyDeath.AddListener(CreateBonusBullet);
+        AfterEnemyDeath.AddListener(CreateBonusBullet);
         Time.timeScale= 1.0f;
         _rewardsUI.SetActive(false);
-        AfterEnemyDeath.Invoke();
     }
 
     private void CreateBonusBullet()
@@ -52,11 +50,20 @@ public class RewardsEffects : MonoBehaviour
         Instantiate(_bulletPrefab, _target);
         _bulletPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.right * _bulletSpeed;
         Debug.Log("Enemy devient bullet");
-
     }
 
     public void DoubleAttack()
     {
+        //GameObject projectileUp = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
+        //GameObject projectileDown = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
+        //GameObject projectileRight = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
+        //GameObject projectileLeft = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
+
+        //projectileUp.GetComponent<Rigidbody2D>().velocity = Vector2.up * _bulletSpeed;
+        //projectileDown.GetComponent<Rigidbody2D>().velocity = Vector2.down * _bulletSpeed;
+        //projectileRight.GetComponent<Rigidbody2D>().velocity = Vector2.right * _bulletSpeed;
+        //projectileLeft.GetComponent<Rigidbody2D>().velocity = Vector2.left * _bulletSpeed;
+
         Debug.Log("Double attaque");
     }
 

@@ -19,7 +19,7 @@ public class KillCount : MonoBehaviour
     private void Update()
     {
         _killCounterText.text = _killEnemy.m_value.ToString();
-        if (_killEnemy.m_value == 1)
+        if (_killEnemy.m_value == 10)
         {
             _rewardUI.SetActive(true);
             Time.timeScale = 0;
