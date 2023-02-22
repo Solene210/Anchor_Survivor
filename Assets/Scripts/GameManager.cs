@@ -12,14 +12,9 @@ public class GameManager : MonoBehaviour
         _killEnemy.m_value = 0;
     }
 
-    void Start()
+    public void Quit()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Application.Quit();
+        Debug.Log("Quitte le jeu");
     }
 }

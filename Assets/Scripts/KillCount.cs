@@ -8,6 +8,8 @@ public class KillCount : MonoBehaviour
 {
     [SerializeField]
     private IntVariable _killEnemy;
+    [SerializeField]
+    private GameObject _rewardUI;
 
     private void Awake()
     {
@@ -17,6 +19,12 @@ public class KillCount : MonoBehaviour
     private void Update()
     {
         _killCounterText.text = _killEnemy.m_value.ToString();
+        if (_killEnemy.m_value == 1)
+        {
+            _rewardUI.SetActive(true);
+            Time.timeScale = 0;
+            _killEnemy.m_value = 0;
+        }
     }
     private TextMeshProUGUI _killCounterText;
 }

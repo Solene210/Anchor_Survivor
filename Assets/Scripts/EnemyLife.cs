@@ -7,20 +7,20 @@ public class EnemyLife : MonoBehaviour
     [SerializeField]
     private EnemyBehaviour _enemyBehaviour;
     [SerializeField]
-    private int _kill;
-    [SerializeField]
     private IntVariable _killEnemy;
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         if (_isDead == true)
         {
             StartCoroutine(coroutine());
             _enemyBehaviour.enabled= false;
+            _isDead = false;
             _rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
         }
     }
@@ -29,7 +29,7 @@ public class EnemyLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("Enemy -1");
+            Debug.Log("Collision enemy avec bullet");
             _isDead = true;
             Destroy(collision.gameObject);
         }
@@ -44,8 +44,8 @@ public class EnemyLife : MonoBehaviour
             yield return new WaitForSeconds(0.10f);
             GetComponent<SpriteRenderer>().color = Color.blue;
         }
-        _killEnemy.m_value += _kill;
-        Destroy(gameObject);;
+        _killEnemy.m_value += 1;
+        Destroy(gameObject);
     }
 
     private bool _isDead = false;

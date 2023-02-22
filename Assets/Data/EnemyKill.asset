@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf03ace18cdc4ff459e254746d130e43, type: 3}
   m_Name: EnemyKill
   m_EditorClassIdentifier: 
-  m_value: 1
+  m_value: 6

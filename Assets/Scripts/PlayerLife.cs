@@ -34,9 +34,7 @@ public class PlayerLife : MonoBehaviour
     }
     public void Retry()
     {
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private bool _isDead = false;
