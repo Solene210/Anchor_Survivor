@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyLife : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class EnemyLife : MonoBehaviour
     private EnemyBehaviour _enemyBehaviour;
     [SerializeField]
     private IntVariable _killEnemy;
+    [SerializeField]
+    private GameObject _bulletPrefab;
+    [SerializeField]
+    private float _bulletSpeed;
 
     private void Awake()
     {
@@ -48,6 +53,13 @@ public class EnemyLife : MonoBehaviour
         _killEnemy.m_value += 1;
         RewardsEffects r = GameObject.Find("RewardsManager").GetComponent<RewardsEffects>();
         r.AfterEnemyDeath?.Invoke();
+        if(r.IsEnemyDead == true)
+        {
+            Vector2 position = new Vector2(transform.position.x +1, transform.position.y);
+            Instantiate(_bulletPrefab, position, Quaternion.identity);
+            _bulletPrefab.GetComponent<Rigidbody2D>().velocity = position.normalized * _bulletSpeed;
+        }
+        
         Destroy(gameObject);
     }
 

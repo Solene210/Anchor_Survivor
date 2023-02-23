@@ -114,8 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyBehaviour: {fileID: 295740939948877852}
-  _kill: 1
   _killEnemy: {fileID: 11400000, guid: cf7cd785386bac545a9a6c080f532981, type: 2}
+  _bulletPrefab: {fileID: 7996811562420003514, guid: bcb1b3d0be21db54098e1231e1c83a89, type: 3}
+  _bulletSpeed: 10
 --- !u!61 &1064025743846090696
 BoxCollider2D:
   m_ObjectHideFlags: 0

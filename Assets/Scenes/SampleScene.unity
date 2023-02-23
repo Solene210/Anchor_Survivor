@@ -1307,6 +1307,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003651146}
   m_CullTransparentMesh: 1
+--- !u!4 &1089668099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2673780911121005154, guid: 142500263910e3b4b900d319074969a2, type: 3}
+  m_PrefabInstance: {fileID: 2673780912080681760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1101359558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2319,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2044760071}
         m_TargetAssemblyTypeName: RewardsEffects, Assembly-CSharp
-        m_MethodName: AddBullerAfterEnemyDeath
+        m_MethodName: AddBulletAfterEnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2441,7 +2446,8 @@ MonoBehaviour:
   _rewardsUI: {fileID: 262634191}
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
   _bulletSpeed: 1
-  _playerTransform: {fileID: 0}
+  _playerTransform: {fileID: 1089668099}
+  _bulletGroup: {fileID: 2128411690}
   AfterAttack:
     m_PersistentCalls:
       m_Calls: []

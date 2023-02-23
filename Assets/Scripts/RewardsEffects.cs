@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RewardsEffects : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class RewardsEffects : MonoBehaviour
     private GameObject _bulletPrefab;
     [SerializeField]
     private GameObject _rewardsUI;
-    [SerializeField] 
-    private GameObject _enemyPrefab;
     [SerializeField]
     private float _bulletSpeed;
     [SerializeField]
     private Transform _playerTransform;
+    [SerializeField]
+    private GameObject _bulletGroup;
 
     [Header("Event")]
     public UnityEvent AfterAttack;
@@ -23,7 +24,7 @@ public class RewardsEffects : MonoBehaviour
 
     void Start()
     {
-        _target = GameObject.Find("Player").transform;
+       _target = GameObject.Find("Player").transform;
     }
 
     void Update()
@@ -38,34 +39,39 @@ public class RewardsEffects : MonoBehaviour
         _rewardsUI.SetActive(false);
     }
 
-    public void AddBullerAfterEnemyDeath()
+    public void AddBulletAfterEnemyDeath()
     {
         AfterEnemyDeath.AddListener(CreateBonusBullet);
         Time.timeScale= 1.0f;
         _rewardsUI.SetActive(false);
     }
 
-    private void CreateBonusBullet()
+    public void CreateBonusBullet()
     {
-        Instantiate(_bulletPrefab, _target);
-        _bulletPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.right * _bulletSpeed;
-        Debug.Log("Enemy devient bullet");
+        IsEnemyDead = true;
+        Debug.Log("Enemy mort devient bullet");
     }
 
     public void DoubleAttack()
     {
-        //GameObject projectileUp = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
-        //GameObject projectileDown = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
-        //GameObject projectileRight = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
-        //GameObject projectileLeft = Instantiate(_bulletPrefab, _playerTransform.position, Quaternion.identity);
-
-        //projectileUp.GetComponent<Rigidbody2D>().velocity = Vector2.up * _bulletSpeed;
-        //projectileDown.GetComponent<Rigidbody2D>().velocity = Vector2.down * _bulletSpeed;
-        //projectileRight.GetComponent<Rigidbody2D>().velocity = Vector2.right * _bulletSpeed;
-        //projectileLeft.GetComponent<Rigidbody2D>().velocity = Vector2.left * _bulletSpeed;
-
+        List<Vector3> projectilePositions = new List<Vector3>()
+        {
+            new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y + 1, _playerTransform.position.z),
+            new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y - 1, _playerTransform.position.z),
+            new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y -1, _playerTransform.position.z),
+            new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y + 1, _playerTransform.position.z)
+        };
+        foreach (Vector3 position in projectilePositions)
+        {
+            GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
+            projectile.GetComponent<Rigidbody2D>().velocity = (position - _playerTransform.position).normalized * _bulletSpeed;
+            projectile.transform.parent = _bulletGroup.transform;
+        }
         Debug.Log("Double attaque");
     }
 
     private Transform _target;
+    private bool _isEnemyDead;
+
+    public bool IsEnemyDead { get => _isEnemyDead; set => _isEnemyDead = value; }
 }
