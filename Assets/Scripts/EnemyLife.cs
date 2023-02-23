@@ -13,6 +13,8 @@ public class EnemyLife : MonoBehaviour
     private GameObject _bulletPrefab;
     [SerializeField]
     private float _bulletSpeed;
+    [SerializeField]
+    private float _spawnerRadius;
 
     private void Awake()
     {
@@ -55,11 +57,11 @@ public class EnemyLife : MonoBehaviour
         r.AfterEnemyDeath?.Invoke();
         if(r.IsEnemyDead == true)
         {
-            Vector2 position = new Vector2(transform.position.x +1, transform.position.y);
-            Instantiate(_bulletPrefab, position, Quaternion.identity);
-            _bulletPrefab.GetComponent<Rigidbody2D>().velocity = position.normalized * _bulletSpeed;
+            Vector2 position = Random.insideUnitCircle * _spawnerRadius + (Vector2)transform.position;
+            GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
+            projectile.GetComponent<Rigidbody2D>().velocity = position.normalized * _bulletSpeed;
+            Destroy(projectile, 5);
         }
-        
         Destroy(gameObject);
     }
 

@@ -13,11 +13,6 @@ public class PlayerBehavour : MonoBehaviour
         _rb2D = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         Movement();

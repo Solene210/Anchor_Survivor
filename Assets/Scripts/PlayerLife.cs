@@ -18,19 +18,17 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Game Over");
-
             _isDead = true;
         }
     }
+
     private void Update()
     {
         if (_isDead == true)
         {
             Time.timeScale = 0f;
-
             _gameOver.SetActive(true);
         }
-
     }
     public void Retry()
     {

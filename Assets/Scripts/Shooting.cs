@@ -34,19 +34,8 @@ public class Shooting : StateMachineBehaviour
             GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = (position - _playerTransform.position).normalized * _shootSpeed;
             projectile.transform.parent = _bulletGroup.transform;
+            Destroy(projectile, 5);
         }
-        //GameObject projectileUp = Instantiate(_bulletPrefab, animator.gameObject.transform.position, Quaternion.identity);
-        //GameObject projectileDown = Instantiate(_bulletPrefab, animator.gameObject.transform.position, Quaternion.identity);
-        //GameObject projectileRight = Instantiate(_bulletPrefab, animator.gameObject.transform.position, Quaternion.identity);
-        //GameObject projectileLeft = Instantiate(_bulletPrefab, animator.gameObject.transform.position, Quaternion.identity);
-        //projectileUp.GetComponent<Rigidbody2D>().velocity = Vector2.up * _shootSpeed;
-        //projectileDown.GetComponent<Rigidbody2D>().velocity = Vector2.down * _shootSpeed;
-        //projectileRight.GetComponent<Rigidbody2D>().velocity = Vector2.right * _shootSpeed;
-        //projectileLeft.GetComponent<Rigidbody2D>().velocity = Vector2.left * _shootSpeed;
-        //projectileUp.transform.parent = _bulletGroup.transform;
-        //projectileDown.transform.parent = _bulletGroup.transform;
-        //projectileRight.transform.parent = _bulletGroup.transform;
-        //projectileLeft.transform.parent = _bulletGroup.transform;
         _player.GetComponent<SpriteRenderer>().color = Color.green;
     }
 

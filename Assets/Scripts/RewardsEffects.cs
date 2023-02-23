@@ -22,16 +22,6 @@ public class RewardsEffects : MonoBehaviour
     public UnityEvent AfterAttack;
     public UnityEvent AfterEnemyDeath;
 
-    void Start()
-    {
-       _target = GameObject.Find("Player").transform;
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void AddAttack()
     {
         AfterAttack.AddListener(DoubleAttack);
@@ -76,7 +66,6 @@ public class RewardsEffects : MonoBehaviour
         }
     }
 
-    private Transform _target;
     private bool _isEnemyDead;
 
     public bool IsEnemyDead { get => _isEnemyDead; set => _isEnemyDead = value; }
