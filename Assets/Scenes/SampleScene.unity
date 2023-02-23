@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 2
+  _spawnInterval: 3.5
   _spawnerRadius: 3
   _color: {r: 0.049723387, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 3
+  _spawnInterval: 3.5
   _spawnerRadius: 3
   _color: {r: 0.27664185, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 2.5
+  _spawnInterval: 3.5
   _spawnerRadius: 3
   _color: {r: 0.049723387, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -1957,10 +1957,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2242,6 +2242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _killEnemy: {fileID: 11400000, guid: cf7cd785386bac545a9a6c080f532981, type: 2}
   _rewardUI: {fileID: 262634191}
+  _kills: 10
 --- !u!1 &1850035847
 GameObject:
   m_ObjectHideFlags: 0
