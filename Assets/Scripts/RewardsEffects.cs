@@ -54,20 +54,26 @@ public class RewardsEffects : MonoBehaviour
 
     public void DoubleAttack()
     {
-        List<Vector3> projectilePositions = new List<Vector3>()
+        int random = Random.Range(1, 3);
+        Debug.Log("random = " + random);
+        if (random == 2)
         {
-            new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y + 1, _playerTransform.position.z),
-            new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y - 1, _playerTransform.position.z),
-            new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y -1, _playerTransform.position.z),
-            new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y + 1, _playerTransform.position.z)
-        };
-        foreach (Vector3 position in projectilePositions)
-        {
-            GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().velocity = (position - _playerTransform.position).normalized * _bulletSpeed;
-            projectile.transform.parent = _bulletGroup.transform;
+            List<Vector3> projectilePositions = new List<Vector3>()
+            {
+                new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y + 1, _playerTransform.position.z),
+                new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y - 1, _playerTransform.position.z),
+                new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y -1, _playerTransform.position.z),
+                new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y + 1, _playerTransform.position.z)
+            };
+            foreach (Vector3 position in projectilePositions)
+            {
+                GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
+                projectile.GetComponent<Rigidbody2D>().velocity = (position - _playerTransform.position).normalized * _bulletSpeed;
+                projectile.transform.parent = _bulletGroup.transform;
+                Destroy(projectile, 5);
+            }
+            Debug.Log("Double attaque");
         }
-        Debug.Log("Double attaque");
     }
 
     private Transform _target;
