@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private IntVariable _killEnemy;
 
-    private void Awake()
+    private void Start()
     {
         _killEnemy.m_value = 0;
     }
