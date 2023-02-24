@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 3.5
+  _spawnInterval: 3
   _spawnerRadius: 3
   _color: {r: 0.049723387, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 3.5
+  _spawnInterval: 3
   _spawnerRadius: 3
   _color: {r: 0.27664185, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 3.5
+  _spawnInterval: 3
   _spawnerRadius: 3
   _color: {r: 0.049723387, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7663547056137258556, guid: 7b779ce82f13aee40bd3b7c417b626f2, type: 3}
-  _spawnInterval: 3.5
+  _spawnInterval: 3
   _spawnerRadius: 3
   _color: {r: 0.049723387, g: 1, b: 0, a: 0}
   _drawGizmo: 1
@@ -2526,10 +2526,6 @@ PrefabInstance:
     - target: {fileID: 2673780911121005085, guid: 142500263910e3b4b900d319074969a2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2673780911121005086, guid: 142500263910e3b4b900d319074969a2, type: 3}
-      propertyPath: _speed
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2673780911121005154, guid: 142500263910e3b4b900d319074969a2, type: 3}
       propertyPath: m_RootOrder

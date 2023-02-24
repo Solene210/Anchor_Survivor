@@ -57,10 +57,15 @@ public class EnemyLife : MonoBehaviour
         r.AfterEnemyDeath?.Invoke();
         if(r.IsEnemyDead == true)
         {
-            Vector2 position = Random.insideUnitCircle * _spawnerRadius + (Vector2)transform.position;
-            GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().velocity = position.normalized * _bulletSpeed;
-            Destroy(projectile, 5);
+            int random = Random.Range(1, 3);
+            Debug.Log("random bullet enemy = " + random);
+            if (random == 1)
+            {
+                Vector2 position = Random.insideUnitCircle * _spawnerRadius + (Vector2)transform.position;
+                GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
+                projectile.GetComponent<Rigidbody2D>().velocity = position.normalized * _bulletSpeed;
+                Destroy(projectile, 5);
+            }
         }
         Destroy(gameObject);
     }
