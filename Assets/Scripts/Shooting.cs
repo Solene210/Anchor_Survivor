@@ -34,7 +34,7 @@ public class Shooting : StateMachineBehaviour
             GameObject projectile = Instantiate(_bulletPrefab, position, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = (position - _playerTransform.position).normalized * _shootSpeed;
             projectile.transform.parent = _bulletGroup.transform;
-            Destroy(projectile, 5);
+            Destroy(projectile, 1.5f);
         }
         _player.GetComponent<SpriteRenderer>().color = Color.green;
     }
